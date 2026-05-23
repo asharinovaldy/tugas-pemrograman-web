@@ -30,29 +30,83 @@
         </ul>
         <a id="logoutBtn">Logout</a>
     </nav>
-    <div class="container">
+    <div id="stockApp" class="container">
         <h2>Informasi Stok Bahan Ajar</h2>
 
-        <!-- Tombol Tambah Stok -->
-        <button type="button" id="btnTambah" class="btnTambah">Tambah Stok</button>
+            <div class="select-filter">
+                 <!-- Tombol Tambah Stok -->
+                <button type="button" id="btnTambah" class="btnTambah" @click="openAddForm">Tambah Stok</button>
+                <div class="filter">
+                    <h4 style="margin: 8px 0;">Filter</h4>
+                    <select v-model="selectedUpbjj" id="upbjjSelect" :style="{ backgroundColor: 'transparent', cursor: 'pointer', border: '1px solid #ccc', borderRadius: '4px' }">
+                        <option value="">Pilih UPBJJ</option>
+                        <option v-for="(u, i) in upbjjList" :key="i">{{ u }}</option>
+                    </select>
+    
+                    <select v-model="selectedKategori" :disabled="!selectedUpbjj" :style="{ backgroundColor: !selectedUpbjj ? '#f0f0f0' : '#d9d8d4', cursor: !selectedUpbjj ? 'not-allowed' : 'pointer', border: '1px solid #ccc', borderRadius: '4px' }">
+                        <option value="">Semua Kategori</option>
+                        <option v-for="(k, i) in kategoriListFiltered" :key="i">{{ k }}</option>
+                    </select>
+                    <select v-model="sortBy" id="sortSelect" :style="{ backgroundColor: 'transparent', cursor: 'pointer', border: '1px solid #ccc', borderRadius: '4px' }">
+                        <option value="">Urutkan berdasarkan</option>
+                        <option value="judul">Judul</option>
+                        <option value="qty">Jumlah</option>
+                        <option value="harga">Harga</option>
+                    </select>
+                    <button @click="resetFilter" class="reset-filter-btn"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                </div>
+                
+            </div>
+
+       
     
         <!-- Tabel Stok -->
         <table id="tabelStok">
             <thead>
                 <tr>
-                    <th>Kode</th>
-                    <th>Nama Bahan Ajar</th>
-                    <th>Stok</th>
-                    <th>Lokasi</th>
-                    <th>Cover</th>
+                     <th>Kode</th>
+                    <th>Judul</th>
+                    <th>Kategori</th>
+                    <th>UPBJJ</th>
+                    <th>Lokasi Rak</th>
+                    <th>Harga</th>
+                    <th>Jumlah</th>
+                    <th>Status</th>
+                    <th>Catatan</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                <tr v-for="item in filteredData" :key="item.kode">
+                    <td>{{ item.kode }}</td>
+                    <td>{{ item.judul }}</td>
+                    <td>{{ item.kategori }}</td>
+                    <td>{{ item.upbjj }}</td>
+                    <td>{{ item.lokasiRak }}</td>
+                    <td>{{ item.harga }}</td>
+                    <td>{{ item.qty }}</td>
+                    <td :class="statusKelas(item)">
+                        {{ statusText(item) }}
+                    </td>
+                    <td v-html="item.catatanHTML"></td>
+                    <td class="action-buttons">
+                        <button @click="editItem(item)" class="edit">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button @click="deleteItem(item)" class="delete">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="js/data.js"></script>
-    <script src="js/script.js"></script>
+    <script src="./js/dataBahanAjar.js"></script>
+    <script src="./js/stock-app.js"></script>
+    <!-- <script src="./js/script.js"></script> -->
 </body>
 
 </html>

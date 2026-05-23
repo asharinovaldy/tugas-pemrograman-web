@@ -277,6 +277,70 @@ input {
     margin-top: 25px;
 }
 
+.select-filter {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;    
+}
+
+.filter {
+    
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.reset-filter-btn {
+    background-color:seagreen;
+    border: none;
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.reset-filter-btn:hover {
+    background-color: #32cd32;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.edit {
+    border: none;
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 18px;
+    background-color:coral;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.edit:hover {
+    background-color: #ff6347;
+}
+
+.delete {
+    background-color:crimson;
+    border: none;
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.delete:hover {
+    background-color: darkred;
+}
+
 .btnTambah {
     background-color: #1b6dc1;
     color: white;
@@ -284,6 +348,27 @@ input {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+div:where(.swal2-container) input:where(.swal2-input), div:where(.swal2-container) input:where(.swal2-file), div:where(.swal2-container) textarea:where(.swal2-textarea), div:where(.swal2-container) select:where(.swal2-select) {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 10px 0 !important;
+    font-size: smaller !important;
+}
+
+.warning {
+    color: #ffd500;
+    font-weight: bold;
+}
+.danger {
+    color: #f44336;
+    font-weight: bold;
+}
+
+.success {
+    color: #4caf50;
+    font-weight: bold;
 }
 
 .btnViewCover {
@@ -355,6 +440,68 @@ form#formTambah {
 form#formTambah button {
     width: 100%;
     margin-top: 15px;
+}
+
+.tracking-container {
+    max-width: 75%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* text-align: center; */
+}
+.tracking-container label {
+    text-align: left;
+}
+
+.paket-detail {
+    margin: -20px 0 20px 0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+.paket-detail ol {
+    text-align: left;
+    margin-left: 20px;
+}
+.paket-detail h4, .paket-detail p, .paket-detail ol, .paket-detail li {
+    margin-bottom: 10px;
+    color: #1b1b1b;
+}
+
+.tracking-table {
+    animation: fadeIn 0.5s ease-in-out;
+    max-width: 75%;
+    margin: auto;
+}
+
+.tracking-table h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #1b1b1b;
+}
+
+.form-do {
+    text-align: left;
+}
+
+.filter-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.find-button {
+    background-color: #1b6dc1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* media query */
